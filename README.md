@@ -6,7 +6,7 @@ L'objectif est de permettre aux entreprises de suivre et de gérer efficacement 
 ## Structure du projet 
 Le projet est organisé de la manière suivante :
 
-![image controle chagr](https://github.com/user-attachments/assets/5c3f6ac1-dfff-40f2-8024-16d4bf6b4a64)   ![chgaaaar 2](https://github.com/user-attachments/assets/d227c325-0080-4882-ab8b-cac2fb2cf8f1)
+![image controle chagr](https://github.com/user-attachments/assets/5c3f6ac1-dfff-40f2-8024-16d4bf6b4a64)   
 
 
 - controller: Ce package contient les contrôleurs qui gèrent les interactions avec l'utilisateur via l'interface Web (par exemple, les pages HTML, les formulaires, etc.).
