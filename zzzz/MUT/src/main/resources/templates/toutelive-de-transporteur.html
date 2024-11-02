@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Livraisons</title>
+    <!-- Liens vers Bootstrap et Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            font-family: 'Arial', sans-serif;
+            color: #444;
+        }
+        .header-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        .table-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .btn-custom {
+            border-radius: 8px;
+            background: linear-gradient(90deg, #4ca1af, #2c3e50);
+            border: none;
+            color: white;
+            transition: background 0.3s ease;
+        }
+        .btn-custom:hover {
+            background: #2c3e50;
+        }
+        .icon-text {
+            display: flex;
+            align-items: center;
+        }
+        .icon-text i {
+            margin-right: 8px;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f1f9ff;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+            display: block;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- En-tête avec titre -->
+    <div class="header-container">
+        <h1 class="display-5"><i class="fas fa-truck"></i> Liste des Livraisons</h1>
+    </div>
+
+    <div th:switch="${livraisons}">
+        <div th:case="null" class="alert alert-danger text-center" role="alert">
+            Aucune livraison !!
+        </div>
+        <div th:case="${#lists.isEmpty(livraisons)}" class="alert alert-danger text-center" role="alert">
+            Aucune livraison !!
+        </div>
+        <div th:case="*">
+            <div class="table-container">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Adresse</th>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Transporteur</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="livraison : ${livraisons}">
+                        <td th:text="${livraison.adresse}">Adresse de livraison</td>
+                        <td th:text="${livraison.date}">Date de livraison</td>
+                        <td th:text="${livraison.client}">Client de livraison</td>
+
+                        <td>
+                            <span th:if="${livraison.transporteur != null}">
+                                <a th:href="@{/transporteur/livraisons/{id}(id=${livraison.transporteur.id})}"
+                                   th:text="${livraison.transporteur.nom}" class="text-dark font-weight-bold"
+                                   style="text-decoration: none;"></a>
+                            </span>
+                            <span th:if="${livraison.transporteur == null}">Transporteur inconnu</span>
+                        </td>
+                        <td>
+                            <!-- Formulaire pour le bouton de suppression -->
+                            <form th:action="@{/livraison/delete/{id}(id=${livraison.id})}" method="post"
+                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette livraison?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger btn-custom">
+                                    Supprimer
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Boutons d'actions -->
+            <div class="text-center mt-4">
+                <a href="/addlivraison" class="btn btn-custom btn-lg mr-2">
+                    <i class="fas fa-plus-circle"></i> Ajouter une nouvelle livraison
+                </a>
+                <a href="/signupicone" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-home"></i> Retour à l'accueil
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inclusion des scripts JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

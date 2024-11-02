@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Livraisons et Transporteurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="https://example.com/path/to/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-container h1 {
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #4ca1af;
+            margin-bottom: 20px;
+        }
+
+        .action-button {
+            display: inline-block;
+            margin: 15px;
+            padding: 12px 24px;
+            background-color: #4ca1af;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-button:hover {
+            background-color: #2c3e50;
+        }
+
+        .italic-message {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .action-button i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <h1>Gestion des Livraisons et Transporteurs</h1>
+
+    <a href="/addlivraison" class="action-button"><i class="fas fa-truck"></i> Ajouter une livraison</a>
+    <a href="/addtransporteur" class="action-button"><i class="fas fa-user-plus"></i> Ajouter un transporteur</a>
+    <a href="/signuppp" class="action-button"><i class="fas fa-list"></i> Liste des transporteurs</a>
+    <a href="/signupp" class="action-button"><i class="fas fa-list-alt"></i> Liste des livraisons</a>
+
+    <p class="italic-message">Vous voulez plonger dans les détails ? Vas-y !</p>
+</div>
+</body>
+</html>
+

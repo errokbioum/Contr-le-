@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Transporteur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="https://example.com/path/to/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-container h1 {
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #4ca1af;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="submit"] {
+            padding: 12px 24px;
+            background-color: #4ca1af;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2c3e50;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <h1>Ajouter un Transporteur</h1>
+    <form action="#" th:action="@{/adddtransporteur}" th:object="${transporteur}" method="post">
+
+        <div class="form-group">
+            <label for="nom">Nom du transporteur</label>
+            <input type="text" th:field="*{nom}" id="nom" placeholder="Nom du transporteur">
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="vehicule">Véhicule</label>
+            <input type="text" th:field="*{vehicul}" id="vehicule" placeholder="Véhicule">
+            <span th:if="${#fields.hasErrors('vehicul')}" th:errors="*{vehicul}" class="error"></span>
+        </div>
+
+        <input type="submit" value="Ajouter transporteur">
+    </form>
+</div>
+
+</body>
+</html>

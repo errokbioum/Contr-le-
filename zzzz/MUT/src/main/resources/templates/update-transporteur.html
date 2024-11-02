@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un Transporteur - MUT</title>
+    <!-- Liens vers Bootstrap, Font Awesome et styles personnalisés -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Style général de la page */
+        body {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            font-family: 'Arial', sans-serif;
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        /* Conteneur du formulaire */
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+        /* Style du logo */
+        .logo {
+            max-width: 120px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        /* Titre et icônes */
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ca1af;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #555;
+        }
+        .form-group input {
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .form-group input:focus {
+            border-color: #4ca1af;
+            box-shadow: 0 0 5px rgba(76, 161, 175, 0.5);
+        }
+        /* Boutons */
+        .btn-primary, .btn-outline-primary {
+            border-radius: 8px;
+            background: linear-gradient(90deg, #4ca1af, #2c3e50);
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #2c3e50;
+        }
+        .btn-outline-primary {
+            background: transparent;
+            color: #4ca1af;
+            border: 1px solid #4ca1af;
+        }
+        .btn-outline-primary:hover {
+            background: #4ca1af;
+            color: white;
+        }
+        /* Message d'erreur */
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+            display: block;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <!-- Logo MUT -->
+    <img src="logo_mut.png" alt="Logo MUT" class="logo"> <!-- Remplacez "logo_mut.png" par le chemin de votre logo MUT -->
+
+    <div class="form-title">
+        <h1>Modifier un Transporteur <i class="fas fa-truck"></i></h1>
+    </div>
+
+    <form th:action="@{/transporteur/editerid/{id}(id=${transporteur.id})}" th:object="${transporteur}" method="post">
+
+        <!-- Nom -->
+        <div class="form-group">
+            <label for="nom"><i class="fas fa-user"></i> Nom</label>
+            <input type="text" th:field="*{nom}" class="form-control" id="nom" placeholder="Nom" required />
+            <small class="error" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></small>
+        </div>
+
+        <!-- Véhicule -->
+        <div class="form-group">
+            <label for="vehicul"><i class="fas fa-car"></i> Véhicule</label>
+            <input type="text" th:field="*{vehicul}" class="form-control" id="vehicul" placeholder="Véhicule" />
+            <small class="error" th:if="${#fields.hasErrors('vehicul')}" th:errors="*{vehicul}"></small>
+        </div>
+
+        <!-- Boutons de soumission et d'annulation -->
+        <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-outline-primary" onclick="history.back()">
+                <i class="fas fa-times-circle"></i> Annuler
+            </button>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check-circle"></i> Mettre à jour le transporteur
+            </button>
+        </div>
+    </form>
+
+    <!-- Message d'erreur -->
+    <div th:if="${errorMessage}" class="error" th:text="${errorMessage}"></div>
+</div>
+
+<!-- Inclusion de Bootstrap et Font Awesome -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
