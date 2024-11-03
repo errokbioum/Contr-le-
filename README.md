@@ -79,7 +79,7 @@ __Le projet est organisé de la manière suivante__ :
 
 
 
-https://github.com/user-attachments/assets/f1c3f227-ae31-4266-85b8-64482bc34c85
+
 
 
 
